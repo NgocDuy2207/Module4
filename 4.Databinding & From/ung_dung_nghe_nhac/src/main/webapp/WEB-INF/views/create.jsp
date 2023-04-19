@@ -14,30 +14,30 @@
     <title>$Create$</title>
 </head>
 <body>
-  <form method="post" action="/music/create" modelAttribute="music">
+  <form:form method="post" action="/music/create" modelAttribute="music" >
       <table>
         <tr>
           <td>Name: </td>
-          <td><form: input type="text" path="name"/></td>
+          <td><form:input type ="text" path="name"/></td>
         </tr>
         <tr>
           <td>artistName: </td>
-          <td><form: input type="text" path="artistName"/></td>
+          <td><form:input type="text" path="artistName"/></td>
         </tr>
         <tr>
           <td>kindOfMusic: </td>
-          <td><form: input type="text" path="kindOfMusic"/></td>
+          <td><form:input type="text" path="kindOfMusic"/></td>
         </tr>
         <tr>
           <td>pathMusic: </td>
-          <td><form: input type="text" path="pathMusic"/></td>
+          <td><form:input type="text" path="pathMusic"/></td>
         </tr>
         <tr>
           <td><input type="submit" value="submit"></td>
         </tr>
       </table>
 
-  </form>
+  </form:form>
 
 </body>
 </html>

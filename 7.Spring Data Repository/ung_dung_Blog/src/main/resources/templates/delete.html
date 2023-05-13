@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" xmlns:th="http://www.thymeleaf.org">
+    <title>$Delete$</title>
+</head>
+<body>
+        <form action="/blog/delete" method="post" th:object="${blog}">
+            <input hidden="hidden" th:field="*{id}">
+            <label>Id: </label>
+            <span th:utext="*{id}" th:value="*{id}"></span> <br>
+            <label>Title: </label>
+            <span th:utext="*{title}" name="title"></span> <br>
+            <label>NamePeoplePost: </label>
+            <span th:utext="*{namePeoplePost}" name="namePeoplePost"></span> <br>
+            <label>DayWriteBlog: </label>
+            <span th:utext="${#dates.format(blog.getDayWriteBlog(), 'dd-MM-yyyy')}" name="dayWriteBlog"></span> <br>
+            <label>Category: </label>
+            <span th:utext="*{category.type}" name="category"></span> <br>
+            <button type="submit">Delete</button>
+        </form>
+
+</body>
+</html>

@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" xmlns:th="http://www.thymeleaf.org">
+    <title>Details</title>
+</head>
+<body>
+    <tbody th:object="${blogDetail}">
+        <h1>Title: <a th:text="*{title}"></a></h1> <br>
+        <h3>Type Category: <a th:text="*{category.type}"></a></h3> <br>
+        <p th:text="*{content}" ></p>
+    </tbody>
+
+
+</body>
+</html>

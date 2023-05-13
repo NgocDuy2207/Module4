@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" xmlns:th="http://www.thymeleaf.org">
+    <title>Title</title>
+</head>
+<body>
+<p style="color: red" th:text="${success}"></p>
+<a href="/create">add user</a>
+<table style="border: honeydew" 1px >
+    <tr>
+        <th>STT</th>
+        <th>ID</th>
+        <th>firstName</th>
+        <th>lastName</th>
+        <th>phoneNumber</th>
+        <th>age</th>
+        <th>email</th>
+<!--        <th>passWord</th>-->
+    </tr>
+    <tr th:each="users, loop : ${user}" >
+        <td th:text="${loop.count}"></td>
+        <td th:text="${users.id}"></td>
+        <td th:text="${users.firstName}"></td>
+        <td th:text="${users.lastName}"></td>
+        <td th:text="${users.phoneNumber}"></td>
+        <td th:text="${users.age}"></td>
+        <td th:text="${users.email}"></td>
+<!--        <td><a th:href="@{/music/delete/{id}(id = ${music.id})}">Delete</a></td>-->
+<!--        <td><a th:href="@{/music/update/{id}(id = ${music.id})}">Update</a></td>-->
+    </tr>
+
+</table>
+
+</body>
+</html>

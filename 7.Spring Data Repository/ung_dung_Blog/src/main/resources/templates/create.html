@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" xmlns:th="http://www.thymeleaf.org">
+    <title>Create Blog</title>
+</head>
+<body>
+    <form action="/blog/create" method="post" th:object="${blog}">
+      <!--    <label>Code student</label>-->
+      <!--    <input type="text" th:field="*{codeStudent}" name="codeStudent"/><br>-->
+      <label>Name student</label>
+      <input type="text" th:field="*{nameStudent}" name="nameStudent"/><br>
+      <p style="color: red;" th:if="${#fields.hasErrors('nameStudent')}" th:errors = "*{nameStudent}"></p>
+      <label>Point</label>
+      <input type="text" th:field="*{point}" name="point"/><br>
+      <p style="color: red;" th:if="${#fields.hasErrors('point')}" th:errors = "*{point}"></p>
+      <label>Gender</label>
+      <input type="text"th:field="*{gender}" name="gender"/><br>
+
+      <button type="submit">Create</button>
+    </form>
+
+
+</body>
+</html>

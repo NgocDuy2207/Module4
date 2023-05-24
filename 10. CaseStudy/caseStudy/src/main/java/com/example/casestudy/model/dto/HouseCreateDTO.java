@@ -12,7 +12,7 @@ public class HouseCreateDTO extends FacilityCreateDTO implements Validator {
     private String standardRoom;
     @NotBlank(message = "not blank")
     private String descriptionOtherConvenience;
-    @NotBlank(message = "not blank")
+
     @Min(value = 2 ,message = "numberOfFloors can not be less than 2")
     private Integer numberOfFloors;
     @NotNull(message = "not null")

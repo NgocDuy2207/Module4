@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        form {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin-top: 50px;
+        }
+
+        label {
+            margin-top: 10px;
+        }
+
+        input[type=text], input[type=email], input[type=tel] {
+            margin-top: 5px;
+            padding: 10px;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+            width: 300px;
+            font-size: 16px;
+        }
+
+        button[type=submit] {
+            margin-top: 10px;
+            padding: 10px 20px;
+            border-radius: 5px;
+            background-color: #4CAF50;
+            color: white;
+            font-size: 16px;
+            border: none;
+            cursor: pointer;
+        }
+        button[type=submit]:hover {
+            background-color: #3e8e41;
+        }
+    </style>
+</head>
+<body>
+    <p style="color: red" th:text="${msg}"></p>
+    <form action="/facility/room" method="post" th:object="${roomCreateDTO}">
+        <label for="name">Name:</label>
+        <input type="text" id="name"  th:field="*{name}" required> <br>
+
+        <label for="area">Area:</label>
+        <input type="text" id="area"  th:field="*{area}" required> <br>
+
+        <label for="cost">Cost:</label>
+        <input type="text" id="cost"  th:field="*{cost}"  required> <br>
+
+        <label for="maxPeople">MaxPeoPle:</label>
+        <input type="tel" id="maxPeople"  th:field="*{maxPeople}" required> <br>
+        <label for="rentType">RentType: </label>
+<!--        <select class="form-select" aria-label="Default select example" th:field="*{rentType}" id="rentType">-->
+<!--            <option th:each="rentType : ${rentTypeList}" th:text="${rentType.name}" th:value="${rentType.id}"></option>-->
+<!--        </select> <br>-->
+            <select id="rentType" th:field="*{rentType}">
+                <option value="1">Hours</option>
+                <option value="2">Day</option>
+                <option value="3">Month</option>
+                <option value="4">Years</option>
+            </select>
+        <label for="facilityFree">FacilityFree:</label>
+        <input type="text" id="facilityFree"  th:field="*{facilityFree}" required> <br>
+
+        <button type="submit">Submit</button>
+</form>
+
+
+
+</body>
+</html>

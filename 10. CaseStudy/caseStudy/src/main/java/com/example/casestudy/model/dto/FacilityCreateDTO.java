@@ -5,6 +5,7 @@ import org.springframework.validation.Errors;
 import org.springframework.validation.Validator;
 
 
+import javax.validation.constraints.Min;
 import javax.validation.constraints.NotBlank;
 
 
@@ -12,13 +13,13 @@ public class FacilityCreateDTO implements Validator {
 
     @NotBlank(message = "not blank")
     private String name;
-    @NotBlank(message = "not blank")
+
+    @Min(value = 0, message = "phải lớn hơn không")
     private Integer area;
-    @NotBlank(message = "not blank")
+    @Min(value = 0, message = "phải lớn hơn không")
     private Double cost;
-    @NotBlank(message = "not blank")
+    @Min(value = 0, message = "phải lớn hơn không")
     private Integer maxPeople;
-    @NotBlank(message = "not blank")
     private RentType rentType;
 
 

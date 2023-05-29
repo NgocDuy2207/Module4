@@ -3,16 +3,20 @@ import com.example.casestudy.model.customerModel.Customer;
 import com.example.casestudy.repository.IRepositoryCustomer;
 import com.example.casestudy.service.ICustomerService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import java.util.List;
 @Service
 public class CustomerService implements ICustomerService {
     @Autowired
     private IRepositoryCustomer repository;
+
     @Override
     public List<Customer> getAll() {
-        return repository.findAll();
+        return null;
     }
+
     @Override
     public void save(Customer customer) {
         repository.save(customer);
@@ -21,5 +25,16 @@ public class CustomerService implements ICustomerService {
     @Override
     public void delete(int id) {
         repository.deleteById(id);
+    }
+
+    @Override
+    public Customer findById(int id) {
+        return repository.findById(id).orElse(null);
+    }
+
+
+    @Override
+    public Page<Customer> listAll(int page) {
+        return repository.findAll(Pageable.ofSize(2));
     }
 }

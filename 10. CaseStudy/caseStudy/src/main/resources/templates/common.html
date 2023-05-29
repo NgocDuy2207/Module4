@@ -3,43 +3,169 @@
 <head>
     <meta charset="UTF-8" xmlns:th="http://www.thymeleaf.org">
     <title>Title</title>
+    <style>
+        .dropdown-submenu {
+            position: relative;
+        }
+
+        .dropdown-submenu .dropdown-menu {
+            top: 0;
+            left: 100%;
+            margin-top: -1px;
+        }
+        aside {
+            width: 30%;
+            border: none;
+        }
+        .nav{
+            color: aqua;
+        }
+        .dropdown-menu {
+            background-color: darkseagreen;
+        }
+        .header-panel{
+            margin-bottom: 20px;
+            background-color: #42eff5;
+            border-radius: 15px 15px 15px 15px;
+        }
+        .d-flex{
+
+        }
+    </style>
+
 
 </head>
 <body>
-    <div class="logo" th:fragment="headerHome">
-      <img  class="logo-img" src="https://upload.wikimedia.org/wikipedia/commons/thumb/4/4f/Twitter-logo.svg/2491px-Twitter-logo.svg.png">
-      <p>LOGO</p>
-      <P id="h4">Nguyen Ngoc Duy</P>
-    </div>
-    <nav class="navbar navbar-expand-lg bg-body-tertiary" th:fragment="body">
-        <div class="container">
-            <a class="navbar-brand" href="">Home</a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                    <li class="nav-item">
-                        <a class="nav-link active" aria-current="page" href="t">Employee</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link active" aria-current="page" href="">Customer</a>
-                    </li>
-
-                    <li class="nav-item">
-                        <a class="nav-link active" aria-current="page" href="">Service</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link active" aria-current="page" href="">Contract</a>
-                    </li>
-                </ul>
-                <form class="d-flex" role="search">
-                    <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-                    <button class="btn btn-outline-success" type="submit">Search</button>
-                </form>
+        <header th:fragment="header">
+            <div class="d-flex justify-content-between align-items-center">
+                <img src="https://englishjobs.vn/uploads/1681532392538-db63ed35-a7b1-41f8-b452-b645679666f7.jpg" alt="Logo" style="width: 100px; height: 100px;">
+                <span>Nguyen Ngoc Duy</span>
             </div>
-        </div>
-    </nav>
+        </header>
+        <nav class="header-panel" th:fragment="nav">
+            <ul class="nav">
+                <li class="nav-item">
+                    <a class="nav-link" href="home1.html">Home</a>
+                </li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="employeeDropdown" role="button" data-toggle="dropdown"
+                       aria-haspopup="true" aria-expanded="false">
+                        Customer
+                    </a>
+                    <div class="dropdown-menu" aria-labelledby="customerDropdown">
+                        <a class="dropdown-item" href="/customer">List Customer</a>
+                        <a class="dropdown-item" data-toggle="modal" data-bs-target=".bs-example-modal-lg" href="/createCustomer">Create</a>
+                        <a class="dropdown-item" href="#">Edit</a>
+                        <a class="dropdown-item" href="#">Delete</a>
+                        <a class="dropdown-item" href="#">Search</a>
+                    </div>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link dropdown-toggle" href="#" id="customerDropdown" role="button" data-toggle="dropdown"
+                       aria-haspopup="true" aria-expanded="false">
+                        Employee
+                    </a>
+                    <div class="dropdown-menu" aria-labelledby="customerDropdown">
+                        <a class="dropdown-item" href="#">List Customer</a>
+                        <a class="dropdown-item" href="#">Create</a>
+                        <a class="dropdown-item" href="#">Edit</a>
+                        <a class="dropdown-item" href="#">Delete</a>
+                        <a class="dropdown-item" href="#">Search</a>
+                    </div>
+                </li>
+                <li class="nav-item dropdown" >
+                    <a class="nav-link dropdown-toggle" href="#" id="serviceDropdown" role="button" data-toggle="dropdown"
+                       aria-haspopup="true" aria-expanded="false">
+                        Service
+                    </a>
+                    <div class="dropdown-menu" aria-labelledby="serviceDropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="createSDropdown" role="button" data-toggle="dropdown"
+                           aria-haspopup="true" aria-expanded="false">
+                            Create
+                        </a>
+                        <div class="dropdown-menu" aria-labelledby="createDropdown">
+                            <a class="dropdown-item" href="#">Villa</a>
+                            <a class="dropdown-item" href="#">Room</a>
+                            <a class="dropdown-item" href="#">House</a>
+                        </div>
+                        <a class="nav-link dropdown-toggle" href="#" id="editDropdown" role="button" data-toggle="dropdown"
+                           aria-haspopup="true" aria-expanded="false">
+                            Edit
+                        </a>
+                        <div class="dropdown-menu" aria-labelledby="editDropdown">
+                            <a class="dropdown-item" href="#">Villa</a>
+                            <a class="dropdown-item" href="#">Room</a>
+                            <a class="dropdown-item" href="#">House</a>
+                        </div>
+                        <a class="nav-link dropdown-toggle" href="#" id="searchDropdown" role="button"
+                           data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            Seach
+                        </a>
+                        <div class="dropdown-menu" aria-labelledby="searchDropdown">
+                            <a class="dropdown-item" href="#">Villa</a>
+                            <a class="dropdown-item" href="#">Room</a>
+                            <a class="dropdown-item" href="#">House</a>
+                        </div>
+                    </div>
+                </li>
+                <li class="nav-item"><a class="nav-link" href="#">Contract</a></li>
+            </ul>
+        </nav>
+        <main class="d-flex">
+            <aside style="height: 100vh;" class="bg-light p-3 border-right d-flex flex-column justify-content-between">
+                <ul class="list-group">
+                    <li class="list-group-item">Item One</li>
+                    <li class="list-group-item">Item Two</li>
+                    <li class="list-group-item">Item Three</li>
+                </ul>
+            </aside>
+            <section>
+                <p>tôi là đây</p>
+            </section>
+        </main>
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
+
+
+
+<!--    <div class="logo" th:fragment="headerHome">-->
+<!--      <img  class="logo-img" src="https://upload.wikimedia.org/wikipedia/commons/thumb/4/4f/Twitter-logo.svg/2491px-Twitter-logo.svg.png">-->
+<!--      <p>LOGO</p>-->
+<!--      <P id="h4">Nguyen Ngoc Duy</P>-->
+<!--    </div>-->
+<!--    <nav class="navbar navbar-expand-lg bg-body-tertiary" th:fragment="body">-->
+<!--        <div class="container">-->
+<!--            <a class="navbar-brand" href="">Home</a>-->
+<!--            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">-->
+<!--                <span class="navbar-toggler-icon"></span>-->
+<!--            </button>-->
+<!--            <div class="collapse navbar-collapse" id="navbarSupportedContent">-->
+<!--                <ul class="navbar-nav me-auto mb-2 mb-lg-0">-->
+<!--                    <li class="nav-item">-->
+<!--                        <a class="nav-link active" aria-current="page" href="t">Employee</a>-->
+<!--                    </li>-->
+<!--                    <li class="nav-item">-->
+<!--                        <a class="nav-link active" aria-current="page" href="">Customer</a>-->
+<!--                    </li>-->
+
+<!--                    <li class="nav-item">-->
+<!--                        <a class="nav-link active" aria-current="page" href="">Service</a>-->
+<!--                    </li>-->
+<!--                    <li class="nav-item">-->
+<!--                        <a class="nav-link active" aria-current="page" href="">Contract</a>-->
+<!--                    </li>-->
+<!--                </ul>-->
+<!--                <form class="d-flex" role="search">-->
+<!--                    <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">-->
+<!--                    <button class="btn btn-outline-success" type="submit">Search</button>-->
+<!--                </form>-->
+<!--            </div>-->
+<!--        </div>-->
+<!--    </nav>-->
+
+
+
 
 
 </body>

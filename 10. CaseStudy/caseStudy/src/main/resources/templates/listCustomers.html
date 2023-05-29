@@ -1,11 +1,93 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
+    <meta charset="UTF-8" xmlns:th="http://www.thymeleaf.org">
     <title>Title</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <style>
+        .dropdown-submenu {
+            position: relative;
+        }
+
+        .dropdown-submenu .dropdown-menu {
+            top: 0;
+            left: 100%;
+            margin-top: -1px;
+        }
+        aside {
+            width: 30%;
+            border: none;
+        }
+        .nav{
+            color: aqua;
+        }
+        .dropdown-menu {
+            background-color: darkseagreen;
+        }
+        .header-panel{
+            margin-bottom: 20px;
+            background-color: #42eff5;
+            border-radius: 15px 15px 15px 15px;
+        }
+        .d-flex{
+
+        }
+    </style>
 </head>
 <body>
-  <p>test</p>
+    <header th:replace="~{common::header}"></header>
+    <nav th:replace="~{common::nav}"></nav>
+    <main class="d-flex">
+        <aside style="height: 100vh;" class="bg-light p-3 border-right d-flex flex-column justify-content-between">
+            <ul class="list-group">
+                <li class="list-group-item">Item One</li>
+                <li class="list-group-item">Item Two</li>
+                <li class="list-group-item">Item Three</li>
+            </ul>
+        </aside>
+        <section>
+            <h3>List Customers</h3>
+            <table class="table">
+                <thead>
+                <tr>
+                    <th scope="col">STT</th>
+                    <th scope="col">Name</th>
+                    <th scope="col">BirthDay</th>
+                    <th scope="col">Gender</th>
+                    <th scope="col">IdCard</th>
+                    <th scope="col">Phone</th>
+                    <th scope="col">Email</th>
+                    <th scope="col">Address</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr scope="row" th:each="customer, loop : ${customerList}">
+                    <td th:text="${loop.count}"></td>
+                    <td th:text="${customer.getName()}"></td>
+<!--                    <td th:text="${#dates.format(customer.getBirthDay(), 'dd-MM-yyyy')}"></td>-->
+                    <td th:text="${customer.getBirthDay()}"></td>
+                    <td>
+                        <p th:if="${customer.getGender() == true}">Nam</p>
+                        <p th:if="${customer.getGender() == false}">Nữ</p>
+                        <p th:if="${customer.getGender() == null}">Khác</p>
+                    </td>
+                    <td th:text="${customer.getIdCard()}"></td>
+                    <td th:text="${customer.getPhoneNumber()}"></td>
+                    <td th:text="${customer.getEmail()}"></td>
+                    <td th:text="${customer.getAddress()}"></td>
+                    <td><a th:href="@{/customer/detail/{id}(id = ${customer.id})}">Detail</a></td>
+                    <td><a th:href="@{/customer/delete/{id}(id = ${customer.id})}">Delete</a></td>
+                </tr>
+                </tbody>
+            </table>
+            <div>
+                <a th:href="@{'/customer'(page=${customerList.number - 1})}" th:if="${customerList.hasPrevious()}">Previous</a>
+                <psan th:text="${customerList.number + 1}"></psan>/<span th:text="${customerList.totalPages}"></span>
+                <a th:href="@{'/customer'(page=${customerList.number + 1})}" th:if="${customerList.hasNext()}">Next</a>
+            </div>
+
+        </section>
+    </main>
 
 </body>
 </html>

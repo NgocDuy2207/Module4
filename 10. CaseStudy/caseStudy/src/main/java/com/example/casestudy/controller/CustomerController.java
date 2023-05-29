@@ -13,9 +13,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.validation.annotation.Validated;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 @Controller
@@ -25,29 +23,68 @@ public class CustomerController {
     @Autowired
     private ICustomerTypeService customerTypeService;
     @GetMapping("/customer")
-    public String ModelAndView(Model model){
-        model.addAttribute("customerList", customerService.getAll());
+    public String modelAndView(Model model, @RequestParam(defaultValue = "0") int page){
+        if (page < 0){
+            page = 0;
+        }
+        model.addAttribute("customerList", customerService.listAll(page));
         return "listCustomers";
     }
     @GetMapping("/createCustomer")
-    public String ShowForm(Model model){
+    public String showForm(Model model){
         model.addAttribute("customerCreateDTO", new CustomerCreateDTO());
         model.addAttribute("customerType",customerTypeService.getAll());
         return "createCustomer";
     }
     @PostMapping("/createCustomer")
-    public String CustomerCreate(@Validated @ModelAttribute("customerCreateDTO") CustomerCreateDTO customerCreateDTO,
+    public String customerCreate(@Validated @ModelAttribute("customerCreateDTO") CustomerCreateDTO customerCreateDTO,
                              BindingResult result, RedirectAttributes redirect){
         if (result.hasErrors()){
             redirect.addFlashAttribute("error", "lỗi");
             return "createCustomer";
         }
         Customer customer = new Customer();
+        customerCreateDTO.getBirthDay();
         BeanUtils.copyProperties( customerCreateDTO, customer);
         customerService.save(customer);
         redirect.addFlashAttribute("msg", "thêm mới thành công");
+        return "redirect:/createCustomer";
+    }
+    @GetMapping("/customer/delete/{id}")
+    public String deleteBlog(Model model,@PathVariable int id) {
+        model.addAttribute("customer", customerService.findById(id));
         return "listCustomers";
     }
+    @PostMapping("/customer/delete")
+    public String confirmDelete(@ModelAttribute("customer") Customer customer,
+                                RedirectAttributes redirectAttributes){
+        customerService.delete(customer.getId());
+        redirectAttributes.addFlashAttribute("success", "Removed customer successfully!");
+        return "redirect:/listCustomers";
+
+    }
+    @GetMapping("/customer/detail/{id}")
+    public String detailCustomer(Model model, @PathVariable int id){
+        model.addAttribute("customer", customerService.findById(id));
+        return "listCustomers";
+    }
+    @PostMapping("/customer/detail")
+    public String confirmDetail(@Validated @ModelAttribute("customerCreateDTO")
+                                    CustomerCreateDTO customerCreateDTO,
+                                BindingResult result, RedirectAttributes redirect){
+        if (result.hasErrors()){
+            redirect.addFlashAttribute("error", "lỗi");
+            return "detailCustomer";
+        }
+        Customer customer = new Customer();
+        BeanUtils.copyProperties( customerCreateDTO, customer);
+        customerService.save(customer);
+        redirect.addFlashAttribute("msg", "thêm mới thành công");
+        return "redirect:/detailCustomer";
+
+    }
+
+
 
 
 

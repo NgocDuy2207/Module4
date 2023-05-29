@@ -1,7 +1,11 @@
 package com.example.casestudy.repository;
-
 import com.example.casestudy.model.customerModel.Customer;
-import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.repository.PagingAndSortingRepository;
 
-public interface IRepositoryCustomer extends JpaRepository<Customer, Integer> {
+import javax.transaction.Transactional;
+
+@Transactional
+
+public interface IRepositoryCustomer extends PagingAndSortingRepository<Customer, Integer> {
+
 }

@@ -35,7 +35,7 @@ public class Employee {
     @ManyToOne
     @JoinColumn(name = "divisiton_id")
     private Division division;
-    @ManyToOne
+    @OneToOne
     @JoinColumn(name = "user_name")
     private User user;
 }

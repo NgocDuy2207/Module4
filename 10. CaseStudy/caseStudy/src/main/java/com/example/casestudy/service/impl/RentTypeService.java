@@ -27,4 +27,9 @@ public class RentTypeService implements IRentTypeService {
     public void delete(int id) {
 
     }
+
+    @Override
+    public RentType findById(int id) {
+        return null;
+    }
 }

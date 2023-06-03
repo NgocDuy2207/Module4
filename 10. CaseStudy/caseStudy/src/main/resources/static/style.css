@@ -1,0 +1,34 @@
+
+.dropdown-submenu {
+    position: relative;
+}
+
+.dropdown-submenu .dropdown-menu {
+    top: 0;
+    left: 100%;
+    margin-top: -1px;
+}
+
+aside {
+    width: 30%;
+    border: none;
+}
+
+.nav {
+    color: aqua;
+
+}
+
+.dropdown-menu {
+    background-color: darkseagreen;
+}
+
+.header-panel {
+    margin-bottom: 20px;
+    background-color: #42eff5;
+    border-radius: 15px 15px 15px 15px;
+}
+
+.d-flex {
+
+}

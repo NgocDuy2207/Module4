@@ -26,4 +26,9 @@ public class PositionService implements IPositionService {
     public void delete(int id) {
 
     }
+
+    @Override
+    public Position findById(int id) {
+        return null;
+    }
 }

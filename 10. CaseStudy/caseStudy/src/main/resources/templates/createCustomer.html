@@ -50,12 +50,7 @@
             <label for="name">Name:</label>
             <input type="text" id="name"  th:field="*{name}" required> <br>
             <label for="birthDay">BirthDay:</label>
-<!--            <input type="date" id="birthDay"  th:field="${#dates.format(, 'yyyy-MM-dd')}" required> <br>-->
             <input name="birthDay" id="birthDay" type="date" th:field="*{{birthDay}}" /> <br>
-
-            <!--            <input type="date" id="birthDay"  th:field="${#dates.format(birthDay, 'yyyy-MM-dd')}"   required> <br>-->
-<!--            <input name="dateOfOrder" class="form-control" id="dateOfOrder" type="date" th:field="${#dates.format(dateOfOrder, 'yyyy-MM-dd')}" />-->
-
             <label for="gender">Gender: </label>
             <select id="gender" th:field="*{gender}">
                 <option value="true">Nam</option>

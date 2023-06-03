@@ -27,4 +27,9 @@ public class FacilityService implements IFacilityService {
     public void delete(int id) {
       repository.deleteById(id);
     }
+
+    @Override
+    public Facility findById(int id) {
+        return null;
+    }
 }

@@ -26,4 +26,9 @@ public class CustomerTypeService implements ICustomerTypeService {
     public void delete(int id) {
         repositoryCustomerType.deleteById(id);
     }
+
+    @Override
+    public CustomerType findById(int id) {
+        return null;
+    }
 }

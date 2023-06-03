@@ -16,7 +16,7 @@
 
 .wrapper {
     display: grid;
-    grid-auto-columns: 25% 75%;
+    grid-auto-columns: 30% 70%;
     border: 1px solid black;
     display: flex;
     height: 400px;

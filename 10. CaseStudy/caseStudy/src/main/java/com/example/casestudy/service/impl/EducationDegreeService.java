@@ -25,4 +25,9 @@ public class EducationDegreeService implements IEducationDegreeService {
     public void delete(int id) {
 
     }
+
+    @Override
+    public EducationDegree findById(int id) {
+        return null;
+    }
 }

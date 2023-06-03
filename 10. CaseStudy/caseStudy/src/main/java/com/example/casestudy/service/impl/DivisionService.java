@@ -26,4 +26,9 @@ public class DivisionService implements IDivisionService {
     public void delete(int id) {
 
     }
+
+    @Override
+    public Division findById(int id) {
+        return null;
+    }
 }

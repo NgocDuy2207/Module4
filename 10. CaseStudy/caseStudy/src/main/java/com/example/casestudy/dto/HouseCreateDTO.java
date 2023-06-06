@@ -1,63 +1,55 @@
-package com.example.casestudy.model.serviceModel;
-
-import javax.persistence.*;
+package com.example.casestudy.dto;
+import com.example.casestudy.model.serviceModel.RentType;
+import org.springframework.validation.Errors;
+import org.springframework.validation.Validator;
+import javax.validation.constraints.Min;
 import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
 
-@Entity
-public class Facility {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int id;
-    @Column(name = "name", columnDefinition = "varchar(50)")
+public class HouseCreateDTO  implements Validator {
+    @NotBlank(message = "not blank")
     private String name;
-    @Column(name = "area", columnDefinition = "varchar(50)")
-    private Integer area;
-    @Column(name = "cost", columnDefinition = "double")
 
+    @Min(value = 0, message = "phải lớn hơn không")
+    private Integer area;
+    @Min(value = 0, message = "phải lớn hơn không")
     private Double cost;
-    @Column(name = "max_People", columnDefinition = "int")
+    @Min(value = 0, message = "phải lớn hơn không")
     private Integer maxPeople;
-    @ManyToOne
-    @JoinColumn(name = "rent_type_id")
     private RentType rentType;
-    @ManyToOne
-    @JoinColumn(name = "facility_type")
-    private FacilityType facilityType;
-    @Column(name = "standard_room", columnDefinition = "varchar(50)")
+    @NotBlank(message = "not blank")
     private String standardRoom;
-    @Column(name = "description_other_convenience", columnDefinition = "varchar(50)")
+    @NotBlank(message = "not blank")
     private String descriptionOtherConvenience;
-    @Column(name = "pool_area", columnDefinition = "double")
-    private Double poolArea;
-    @Column(name = "number_of_floors",columnDefinition = "int")
+
+    @Min(value = 2 ,message = "numberOfFloors can not be less than 2")
     private Integer numberOfFloors;
-    @Column(name = "facility_free", columnDefinition = "text")
+    @NotNull(message = "not null")
     private String facilityFree;
 
-    public Facility() {
+    @Override
+    public boolean supports(Class<?> clazz) {
+        return false;
     }
 
-    public Facility (int id, String name, Integer area, Double cost, Integer maxPeople, RentType rentType, FacilityType facilityType, String standardRoom, String descriptionOtherConvenience, Double poolArea, Integer numberOfFloors, String facilityFree) {
-        this.id = id;
+    @Override
+    public void validate(Object target, Errors errors) {
+
+    }
+
+    public HouseCreateDTO() {
+    }
+
+    public HouseCreateDTO(String name, Integer area, Double cost, Integer maxPeople, RentType rentType, String standardRoom, String descriptionOtherConvenience, Integer numberOfFloors, String facilityFree) {
         this.name = name;
         this.area = area;
         this.cost = cost;
         this.maxPeople = maxPeople;
         this.rentType = rentType;
-        this.facilityType = facilityType;
         this.standardRoom = standardRoom;
         this.descriptionOtherConvenience = descriptionOtherConvenience;
-        this.poolArea = poolArea;
         this.numberOfFloors = numberOfFloors;
         this.facilityFree = facilityFree;
-    }
-
-    public int getId() {
-        return id;
-    }
-
-    public void setId(int id) {
-        this.id = id;
     }
 
     public String getName() {
@@ -100,14 +92,6 @@ public class Facility {
         this.rentType = rentType;
     }
 
-    public FacilityType getFacilityType() {
-        return facilityType;
-    }
-
-    public void setFacilityType(FacilityType facilityType) {
-        this.facilityType = facilityType;
-    }
-
     public String getStandardRoom() {
         return standardRoom;
     }
@@ -122,14 +106,6 @@ public class Facility {
 
     public void setDescriptionOtherConvenience(String descriptionOtherConvenience) {
         this.descriptionOtherConvenience = descriptionOtherConvenience;
-    }
-
-    public Double getPoolArea() {
-        return poolArea;
-    }
-
-    public void setPoolArea(Double poolArea) {
-        this.poolArea = poolArea;
     }
 
     public Integer getNumberOfFloors() {

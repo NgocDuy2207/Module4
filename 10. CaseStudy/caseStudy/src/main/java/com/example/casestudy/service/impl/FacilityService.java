@@ -4,6 +4,8 @@ import com.example.casestudy.model.serviceModel.Facility;
 import com.example.casestudy.repository.IRepositoryFacility;
 import com.example.casestudy.service.IFacilityService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -31,5 +33,10 @@ public class FacilityService implements IFacilityService {
     @Override
     public Facility findById(int id) {
         return null;
+    }
+
+    @Override
+    public Page<Facility> listAll(int page) {
+        return repository.findAll(Pageable.ofSize(5).withPage(page));
     }
 }

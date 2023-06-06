@@ -1,10 +1,7 @@
 package com.example.casestudy.controller;
 
 import com.example.casestudy.model.customerModel.Customer;
-import com.example.casestudy.model.customerModel.CustomerType;
-import com.example.casestudy.model.dto.CustomerCreateDTO;
-import com.example.casestudy.model.dto.RoomCreateDTO;
-import com.example.casestudy.model.serviceModel.Facility;
+import com.example.casestudy.dto.CustomerCreateDTO;
 import com.example.casestudy.service.ICustomerService;
 import com.example.casestudy.service.ICustomerTypeService;
 import org.springframework.beans.BeanUtils;
@@ -66,7 +63,7 @@ public class CustomerController {
     @GetMapping("/customer/detail/{id}")
     public String detailCustomer(Model model, @PathVariable int id){
         model.addAttribute("customer", customerService.findById(id));
-        return "listCustomers";
+        return "deleteCustomer";
     }
     @PostMapping("/customer/detail")
     public String confirmDetail(@Validated @ModelAttribute("customerCreateDTO")

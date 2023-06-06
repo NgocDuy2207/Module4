@@ -35,6 +35,6 @@ public class CustomerService implements ICustomerService {
 
     @Override
     public Page<Customer> listAll(int page) {
-        return repository.findAll(Pageable.ofSize(1));
+        return repository.findAll(Pageable.ofSize(1).withPage(page));
     }
 }

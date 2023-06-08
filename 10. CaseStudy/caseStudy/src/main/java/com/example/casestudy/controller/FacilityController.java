@@ -24,16 +24,22 @@ public class FacilityController {
     @Autowired
     private IRentTypeService rentTypeService;
 
-    @GetMapping("/facility")
-    public String listFacility(Model model, @RequestParam(defaultValue = "0") int page){
+    @GetMapping("/facility" )
+    public String listFacility(Model model, @RequestParam(defaultValue = "0") int page,
+                               @RequestParam(value = "type", defaultValue = "0") Integer type){
         if (page < 0){
             page = 0;
         }
         model.addAttribute("roomCreateDTO", new RoomCreateDTO());
         model.addAttribute("houseCreateDTO", new HouseCreateDTO());
         model.addAttribute("villaCreateDTO", new VillaCreateDTO());
-        model.addAttribute("listFacility", facilityService.listAll(page));
         model.addAttribute("rentTypeList", rentTypeService.getAll());
+        if (type==0){
+            model.addAttribute("listFacility", facilityService.listAll(page));
+        }else {
+            model.addAttribute("listFacility", facilityService.searchService(type, page));
+            model.addAttribute("type", type);
+        }
         return "service";
     }
 

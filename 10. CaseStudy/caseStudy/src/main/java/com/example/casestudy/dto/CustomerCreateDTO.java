@@ -26,7 +26,7 @@ public class CustomerCreateDTO implements Validator {
     @DateTimeFormat(pattern="yyyy-MM-dd")
     private LocalDate birthDay;
     private Boolean gender;
-    @NotBlank(message = "not black")
+    @NotBlank(message = "phải điền thông tin")
     @Pattern(regexp = "^([0-9]{9}$|^ [0-9]{12})$")
     private String idCard;
     @NotBlank(message = "not black")

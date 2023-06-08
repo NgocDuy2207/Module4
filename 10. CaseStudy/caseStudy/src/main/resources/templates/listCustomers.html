@@ -78,7 +78,7 @@
                     <td th:text="${customer.getEmail()}"></td>
                     <td th:text="${customer.getAddress()}"></td>
                     <td><a th:href="@{/customer/detail/{id}(id = ${customer.id})}">Detail</a></td>
-                    <td><a th:href="@{/customer/delete/{id}(id = ${customer.id})}" data-bs-toggle="modal" data-bs-target="#customer">Delete</a></td>
+                    <td><a th:href="@{/customer/delete/{id}(id = ${customer.id})}"><button data-bs-toggle="modal" data-bs-target="#customer"> Delete</button></a></td>
                 </tr>
                 </tbody>
             </table>
@@ -87,7 +87,6 @@
                 <psan th:text="${customerList.number + 1}"></psan>/<span th:text="${customerList.totalPages}"></span>
                 <a th:href="@{customer(page=${customerList.number + 1})}" th:if="${customerList.hasNext()}">Next</a>
             </div>
-
         </section>
     </main>
 

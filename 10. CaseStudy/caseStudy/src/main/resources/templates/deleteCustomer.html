@@ -9,27 +9,31 @@
 <body>
       <header th:replace="~{common::header}"></header>
       <div th:replace="~{common::nav}"></div>
-      <!-- Modal -->
-      <form action="/customer/delete" method="post" th:object="${customer}">
-        <div class="modal fade" id="customer" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-          <div class="modal-dialog">
-            <div class="modal-content">
-              <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLabel">Delete Customer</h5>
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-              </div>
-              <div class="modal-body">
-                <label>Name: </label>
-                <span th:field="*{name}"></span>
-              </div>
-              <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                <button type="button" class="btn btn-primary">Delete</button>
-              </div>
-            </div>
-          </div>
-        </div>
-      </form>
+      <main class="d-flex">
+        <aside style="height: 100vh;" class="bg-light p-3 border-right d-flex flex-column justify-content-between">
+          <ul class="list-group">
+            <li class="list-group-item"><button type="button"  class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#room">ADD ROOM</button></li>
+            <li class="list-group-item"><button type="button"  class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#house">ADD HOUSE</button></li>
+            <li class="list-group-item"><button type="button"  class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#villa">ADD VILLA</button></li>
+          </ul>
+        </aside>
+        <section>
+
+            <form action="/customer/delete" method="post" th:object="${customer}">
+                <h3>Delete Customer is Name: <h3 th:filed="*{name}"></h3></h3>
+                <input type="hidden" th:filed="${id}">
+                <label>ID: </label> <label th:text="*{id}"></label> <br>
+                <label>Name: </label> <label th:text="*{name}"></label> <br>
+                <label>BirthDay: </label> <label th:text="${#temporals.format(customer.getBirthDay(),'dd-MM-yyy')}"></label> <br>
+                <label>IdCard: </label> <label th:text="*{idCard}"></label> <br>
+                <label>NumberPhone: </label> <label th:text="*{phoneNumber}"></label> <br>
+                <label>Email: </label> <label th:text="*{email}"></label> <br>
+                <button type="submit">Delete</button>
+
+            </form>
+        </section>
+
+      </main>
 
 </body>
 </html>

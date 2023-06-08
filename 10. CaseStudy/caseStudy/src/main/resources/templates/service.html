@@ -67,9 +67,9 @@
             </tbody>
           </table>
         <div>
-          <a th:href="@{facility(page=${listFacility.number - 1})}" th:if="${listFacility.hasPrevious()}">Previous</a>
+          <a th:href="@{facility(page=${listFacility.number - 1}, type=${type})}" th:if="${listFacility.hasPrevious()}">Previous</a>
           <psan th:text="${listFacility.number + 1}"></psan>/<span th:text="${listFacility.totalPages}"></span>
-          <a th:href="@{facility(page=${listFacility.number + 1})}" th:if="${listFacility.hasNext()}">Next</a>
+          <a th:href="@{facility(page=${listFacility.number + 1}, type=${type})}" th:if="${listFacility.hasNext()}">Next</a>
         </div>
         </section>
     </main>

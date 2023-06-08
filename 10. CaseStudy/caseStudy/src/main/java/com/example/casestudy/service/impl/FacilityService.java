@@ -39,4 +39,9 @@ public class FacilityService implements IFacilityService {
     public Page<Facility> listAll(int page) {
         return repository.findAll(Pageable.ofSize(5).withPage(page));
     }
+
+    @Override
+    public Page<Facility> searchService(Integer type, int page) {
+        return repository.findAllByFacilityType_Id(Pageable.ofSize(2).withPage(page),type);
+    }
 }

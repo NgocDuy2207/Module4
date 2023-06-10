@@ -58,26 +58,27 @@ public class CustomerController {
         customerService.delete(customer.getId());
         redirectAttributes.addFlashAttribute("success", "Removed customer successfully!");
         return "redirect:/customer";
-
     }
     @GetMapping("/customer/detail/{id}")
     public String detailCustomer(Model model, @PathVariable int id){
-        model.addAttribute("customer", customerService.findById(id));
-        return "deleteCustomer";
+        model.addAttribute("customerDetailDTO", customerService.findById(id));
+        model.addAttribute("customerType",customerTypeService.getAll());
+
+        return "createCustomer";
     }
     @PostMapping("/customer/detail")
-    public String confirmDetail(@Validated @ModelAttribute("customerCreateDTO")
+    public String confirmDetail(@Validated @ModelAttribute("customerDetailDTO")
                                     CustomerCreateDTO customerCreateDTO,
                                 BindingResult result, RedirectAttributes redirect){
         if (result.hasErrors()){
-            redirect.addFlashAttribute("error", "lỗi");
-            return "detailCustomer";
+            redirect.addFlashAttribute("error", "not successfully!");
+            return "redirect:/customer/detail/{id}";
         }
         Customer customer = new Customer();
         BeanUtils.copyProperties( customerCreateDTO, customer);
         customerService.save(customer);
-        redirect.addFlashAttribute("msg", "thêm mới thành công");
-        return "redirect:/detailCustomer";
+        redirect.addFlashAttribute("success", "successfully!");
+        return "createCustomer";
 
     }
 

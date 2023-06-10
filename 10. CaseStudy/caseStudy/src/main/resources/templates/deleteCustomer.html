@@ -12,27 +12,25 @@
       <main class="d-flex">
         <aside style="height: 100vh;" class="bg-light p-3 border-right d-flex flex-column justify-content-between">
           <ul class="list-group">
-            <li class="list-group-item"><button type="button"  class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#room">ADD ROOM</button></li>
-            <li class="list-group-item"><button type="button"  class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#house">ADD HOUSE</button></li>
-            <li class="list-group-item"><button type="button"  class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#villa">ADD VILLA</button></li>
+            <li class="list-group-item"><button type="button"  class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#room">Item One</button></li>
+            <li class="list-group-item"><button type="button"  class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#house">Item Two</button></li>
+            <li class="list-group-item"><button type="button"  class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#villa">Item Three</button></li>
           </ul>
         </aside>
         <section>
-
             <form action="/customer/delete" method="post" th:object="${customer}">
-                <h3>Delete Customer is Name: <h3 th:filed="*{name}"></h3></h3>
-                <input type="hidden" th:filed="${id}">
+                <h3>Delete Customer is Name: <h3 th:field="*{name}"></h3></h3>
+                <input type="hidden" th:field="*{id}">
                 <label>ID: </label> <label th:text="*{id}"></label> <br>
                 <label>Name: </label> <label th:text="*{name}"></label> <br>
                 <label>BirthDay: </label> <label th:text="${#temporals.format(customer.getBirthDay(),'dd-MM-yyy')}"></label> <br>
                 <label>IdCard: </label> <label th:text="*{idCard}"></label> <br>
                 <label>NumberPhone: </label> <label th:text="*{phoneNumber}"></label> <br>
                 <label>Email: </label> <label th:text="*{email}"></label> <br>
+                <label>Address: </label> <label th:text="*{address}"></label> <br>
                 <button type="submit">Delete</button>
-
             </form>
         </section>
-
       </main>
 
 </body>

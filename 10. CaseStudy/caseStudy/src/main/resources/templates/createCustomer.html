@@ -40,7 +40,7 @@
     </style>
 </head>
 <body>
-        <p style="color: red" th:text="${msg}"></p>
+        <p style="color:red" th:text="${success}"></p>
         <p style="color: red" th:text="${error}"></p>
         <form action="/createCustomer" method="post" th:object="${customerCreateDTO}">
             <label for="customerType">CustomerType: </label>

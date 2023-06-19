@@ -15,4 +15,10 @@ public class StudentService implements IStudentService {
     public List<Student> getAll() {
         return repository.findAll();
     }
+
+    @Override
+    public Student findById(int id) {
+        return repository.findById(id).orElse(null);
+    }
+
 }

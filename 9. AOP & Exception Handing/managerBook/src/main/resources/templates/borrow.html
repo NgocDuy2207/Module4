@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" xmlns:th="http://www.thymeleaf.org">
+    <title>Borrow</title>
+</head>
+<body>
+    <form action="/borrow/create" method="post" th:object="${DTO}" >
+        <label>Name Book: </label>
+<!--        <span th:utext="${DTO.getBookID().getNameBook()}" th:filed="${DTO.getBookID().getIdBook()}"></span> <br>-->
+<!--            <input th:field="${DTO.bookID}" th:utext="${book.getNameBook()}" th:value="${book.getIdBook()}">  <br>-->
+            <input th:field="${DTO.bookID}" th:utext="${DTO.getBookID().getNameBook()}">  <br>
+        <label>Name Student: </label>
+                <td><select th:field="*{studentsID}">
+                    <option th:each="student: ${listStudent}" th:value="${student.getId()}" th:utext="${student.getName()}">
+                    </option>
+                </select></td> <br>
+      <button type="submit">Create</button>
+
+    </form>
+
+</body>
+</html>

@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>$Detail$</title>
+</head>
+<body>
+    <form method="get" th:object="${product}">
+    <label>Id: </label>
+<!--        <a type="text" th:field="*{id}"></a> <br>-->
+            <span th:utext="*{id}"></span> <br>
+    <label>Code: </label>
+<!--             <span th:utext="${code}"></span> <br>-->
+             <span th:utext="*{code}"></span> <br>
+    <label>Name: </label>
+             <span th:utext="*{name}"></span> <br>
+    <label>Price: </label>
+            <span th:utext="*{price}"></span> <br>
+    <label>manufacturer: </label>
+             <span th:utext="*{manufacturer}"></span> <br>
+    </form>
+</body>
+</html>

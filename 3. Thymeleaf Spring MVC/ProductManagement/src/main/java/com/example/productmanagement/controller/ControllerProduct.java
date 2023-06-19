@@ -38,6 +38,11 @@ public class ControllerProduct {
             model.addAttribute("product", service.findById(id));
             return "/delete";
         }
+        @GetMapping("product/detail/{id}")
+        public String showDetail(@PathVariable int id, Model model){
+            model.addAttribute("product", service.findById(id));
+            return "detail";
+        }
         @PostMapping("/product/create")
         public String createProduct(Model model, @ModelAttribute("product") Product product, BindingResult result){
             if (result.hasErrors()){

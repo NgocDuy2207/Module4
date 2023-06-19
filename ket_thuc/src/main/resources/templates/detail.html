@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" xmlns:th="http://www.thymeleaf.org">
+  <title>Title</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+          integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+</head>
+<body>
+      <nav class="navbar navbar-expand-lg bg-body-tertiary">
+        <div class="container-fluid">
+          <a class="navbar-brand" href="/score">Home</a>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+              <li class="nav-item">
+                <a class="nav-link active" aria-current="page" href="/create">Create Quesiton</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="/createSubject"></a>
+              </li>
+              <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                  Dropdown List
+                </a>
+                <ul class="dropdown-menu">
+                  <li><a class="dropdown-item" href="/student"></a></li>
+                  <li><a class="dropdown-item" href="/subject"></a></li>
+                  <li><hr class="dropdown-divider"></li>
+                  <li><a class="dropdown-item" href="/score"></a></li>
+                </ul>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link " href="/createScore">Add </a>
+              </li>
+            </ul>
+            <form class="d-flex" role="search" action="/search" method="get">
+              <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search" name="tile">
+
+              <button class="btn btn-outline-success" type="submit">Search</button>
+            </form>
+          </div>
+        </div>
+      </nav>
+      <p>Thông tin Chi tiết Giao Dịch</p>
+      <form action="" method="post" th:object="${listGiaoDich}">
+        <input type="hidden" th:field="*{id}">
+        <label>Mã Giao Dịch: </label> <label th:text="*{maGiaoDich}"></label> <br>
+        <label>Loại Bất Động Sản: </label> <label th:text="*{loaiDicVu}"></label> <br>
+        <label>Ngày Giao Dịch: </label> <label th:text="${#temporals.format(listGiaoDich.getDay(),'dd-MM-yyy')}"></label> <br>
+        <label>Diện Tích: </label> <label th:text="*{dienTich}"></label> <br>
+        <label>Tên Khách Hàng: </label> <label th:text="*{maKh.tenKh}"></label> <br>
+        <label>Số Điện Thoại: </label> <label th:text="*{maKh.sdt}"></label> <br>
+        <label>Email: </label> <label th:text="*{maKh.email}"></label> <br>
+        <button type="submit"><a href="/home">Back</a></button>
+      </form>
+
+</body>
+</html>

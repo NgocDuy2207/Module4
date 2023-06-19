@@ -23,7 +23,12 @@
         <td th:text="${book.getIdBook()}"></td>
         <td th:text="${book.getNameBook()}"></td>
         <td th:text="${book.getQuantity()}"></td>
-        <td><a href="">Borrow</a></td>
+
+<!--        <td><select th:field="*{listStudent}">-->
+<!--            <option th:each="student: ${listStudent}" th:value="${student.getId()}" th:utext="${student.getName()}">-->
+<!--            </option>-->
+<!--        </select></td>-->
+        <td><a th:href="@{/borrow/{id}(id = ${book.idBook})}">Borrow</a></td>
 
 <!--        <td><a th:href="@{/blog/detail/{id}(id = ${blog.id})}">Detail</a></td>-->
 <!--        <td><a th:href="@{/blog/delete/{id}(id = ${blog.id})}">Delete</a></td>-->

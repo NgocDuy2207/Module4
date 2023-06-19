@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+</head>
+<body>
+<h2>Create student</h2>
+<p>Name: </p>
+<input type="text" id="nameStudent"/>
+<p style="color:red;" id="errName"></p>
+<p>Point: </p>
+<input type="number" id="point"/>
+<br>
+<p>Gender: </p>
+<input type="text" id="gender"/>
+<input type="button" id="buttonClick" onclick="addNew()" value="Create new"/>
+</body>
+<script>
+    function addNew() {
+        let name = document.getElementById("nameStudent").value;
+        let point = document.getElementById("point").value * 1;
+        let gender = document.getElementById("gender").value * 1;
+        let jsonObject =
+            {
+                "nameStudent": name,
+                "point": point,
+                "gender": gender
+            }
+        $.ajax({
+            headers: {
+                'accept': 'application/json',
+                'Content-Type': 'application/json'
+            },
+            url: 'http://localhost:8080/api/student',
+            type: "POST",
+            data: JSON.stringify(jsonObject),
+            //Tự động thực thi khi server trả về status 2xx
+            success: function (data) {
+                console.log(data)
+            },
+            error: function (data) {
+                console.log(data)
+                document.getElementById("errName").innerText = data.responseJSON.nameStudent;
+            }
+        })
+    }
+</script>
+</html>

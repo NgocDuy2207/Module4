@@ -1,8 +1,16 @@
 package com.example.productmanagement.model;
 
+import javax.persistence.*;
+
+@Entity
 public class Product {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id_product", columnDefinition = "Integer")
     private int id;
+    @Column(name = "code_product", columnDefinition = "varchar(50)")
     private String code;
+    @Column(name = "name_product", columnDefinition = "varchar(50)")
     private String name;
     private double price;
     private  String manufacturer;

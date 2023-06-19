@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+</head>
+<body>
+<table id="table-student" style="width: 700px" border="1">
+    <tr>
+        <th>Code Student</th>
+        <th>Name Student</th>
+        <th>Point</th>
+        <th>Gender</th>
+        <th>Classroom</th>
+    </tr>
+</table>
+</body>
+<script>
+    $(document).ready(function () {
+       $.ajax({
+           headers: {
+               'accept': 'application/json',
+               'Content-Type': 'application/json'
+           },
+           url: 'http://localhost:8080/api/student',
+           type: "GET",
+           //Tự động thực thi khi server trả về status 2xx
+           success: function (data) {
+              let table = document.getElementById("table-student");
+               for(let i = 0; i < data.length; i++) {
+                  let row = table.insertRow(i+1);
+                  let codeStudent = row.insertCell(0);
+                  let name = row.insertCell(1);
+                  let point = row.insertCell(2);
+                  let gender = row.insertCell(3);
+                  let classroom = row.insertCell(4);
+                  codeStudent.innerHTML = data[i].codeStudent;
+                   name.innerHTML = data[i].nameStudent;
+                   point.innerHTML = data[i].point;
+                   gender.innerHTML = data[i].gender;
+                   classroom.innerHTML = data[i].classRoom.nameClass;
+              }
+           },
+           error: function (data) {
+
+           }
+       })
+    })
+</script>
+</html>

@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" xmlns:th="http://www.thymeleaf.org">
+  <title>Title</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+          integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+          crossorigin="anonymous"></script>
+</head>
+<body>
+<header th:fragment="header">
+  <div class="d-flex justify-content-between align-items-center">
+    <img src="https://englishjobs.vn/uploads/1681532392538-db63ed35-a7b1-41f8-b452-b645679666f7.jpg" alt="Logo"
+         style="width: 100px; height: 100px;">
+    <span>Nguyen Ngoc Duy</span>
+  </div>
+</header>
+<nav class="header-panel" th:fragment="nav">
+  <ul class="nav">
+    <li class="nav-item">
+      <a class="nav-link" href="/home">Home</a>
+    </li>
+    <li class="nav-item">
+      <div class="dropdown">
+        <a class="nav-link dropdown-toggle" type="button" id="customer"
+           data-bs-toggle="dropdown" aria-expanded="false">
+          Customer
+        </a>
+        <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+          <li><a class="dropdown-item" href="/customer">List Student</a></li>
+          <li><a class="dropdown-item" href="/createCustomer">Create student</a></li>
+          <li><a class="dropdown-item" href="/editCustomer">Edit</a></li>
+          <li><a class="dropdown-item" href="/deleteCustomer">Delete</a></li>
+          <li><a class="dropdown-item" href="/searchCustomer">Search</a></li>
+        </ul>
+      </div>
+    </li>
+    <li class="nav-item">
+      <div class="dropdown">
+        <a class="nav-link dropdown-toggle" type="button" id="employee"
+           data-bs-toggle="dropdown" aria-expanded="false">
+          Employee
+        </a>
+        <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+          <li><a class="dropdown-item" href="/employee">List Subject</a></li>
+          <li><a class="dropdown-item" href="/createEmployee">Create</a></li>
+          <li><a class="dropdown-item" href="/editEmployee">Edit</a></li>
+          <li><a class="dropdown-item" href="/deleteEmployee">Delete</a></li>
+          <li><a class="dropdown-item" href="/searchEmployee">Search</a></li>
+        </ul>
+      </div>
+    </li>
+    <li class="nav-item">
+      <div class="dropdown">
+        <a class="nav-link dropdown-toggle" type="button" id="service"
+           data-bs-toggle="dropdown" aria-expanded="false">
+          Service
+        </a>
+        <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+          <li><a class="dropdown-item" href="/facility">Service All</a></li>
+          <li><a class="dropdown-item" href="/facility?type=1">Villa</a></li>
+          <li><a class="dropdown-item" href="/facility?type=2">House</a></li>
+          <li><a class="dropdown-item" href="/facility?type=3">Room</a></li>
+        </ul>
+      </div>
+    </li>
+    <li class="nav-item"><a class="nav-link" href="#">Contract</a></li>
+  </ul>
+</nav>
+
+</body>
+</html>

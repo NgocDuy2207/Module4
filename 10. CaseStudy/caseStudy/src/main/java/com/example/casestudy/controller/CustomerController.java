@@ -4,6 +4,7 @@ import com.example.casestudy.model.customerModel.Customer;
 import com.example.casestudy.dto.CustomerCreateDTO;
 import com.example.casestudy.service.ICustomerService;
 import com.example.casestudy.service.ICustomerTypeService;
+import org.aspectj.lang.annotation.Before;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -66,6 +67,7 @@ public class CustomerController {
 
         return "createCustomer";
     }
+
     @PostMapping("/customer/detail")
     public String confirmDetail(@Validated @ModelAttribute("customerDetailDTO")
                                     CustomerCreateDTO customerCreateDTO,
